@@ -14,20 +14,13 @@ class TimeStampedModel(models.Model):
         abstract = True
 
 
-class SlugManager(models.Manager):
-    def filter_slug(self, *args):
-        return self.filter(slug=args[0])
-
-
 class SaveSlugBase(models.Model):
     '''
     Base class to create a slugfield
     '''
 
     slug = models.SlugField(db_index=True, unique=True, 
-        editable=False, blank=True) 
-
-    objects = SlugManager()
+        editable=False, blank=True)
 
     class Meta:
         abstract = True
@@ -44,7 +37,6 @@ class SaveSlugTitle(SaveSlugBase):
         set the slug based on the title field
         '''
         self.slug = slugify(self.title)
-        
         super(SaveSlugTitle, self).save(*args, **kwargs)   
 
     class Meta:
@@ -62,7 +54,6 @@ class SaveSlugName(SaveSlugBase):
         set the slug based on the name field
         '''
         self.slug = slugify(self.name)
-        
         super(SaveSlugName, self).save(*args, **kwargs)   
 
     class Meta:
@@ -75,3 +66,4 @@ class User(AbstractUser):
     absolutely sure the User class will not expand.
     '''
     alive = models.BooleanField(default=True)
+    

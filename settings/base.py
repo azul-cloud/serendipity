@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from django.conf import global_settings
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -18,11 +19,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # Also, make sure to store in an environment variable
-SECRET_KEY = 'scbxb6+g$o3=)0ja+a3))v&#@n8afd-xg)d_@3#^u8-8xl+%0x'
+SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -91,3 +89,5 @@ STATIC_URL = '/static/'
 
 
 AUTH_USER_MODEL = 'main.User'
+
+

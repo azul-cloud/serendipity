@@ -3,7 +3,7 @@
 <html>
     <head>
         <title>
-            {% block title %}Default Title{% endblock %}
+            {% block title %}Artisan Dips{% endblock %}
         </title>
         {% block stylesheets %}
             <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
@@ -20,11 +20,11 @@
     </head>
     <body>
         {% include "maininclude/header.html" %}
-        <div id="main" role="main">
+        <main id="main" role="main">
             <div class="container-fluid">
                 {% block main %}
                 {% endblock %}
             </div>
-        </div>
+        </main>
     </body>
 </html>

@@ -1,3 +1,14 @@
 body, html {
     font-family: "Open Sans", sans-serif;
 }
+body {
+    background-color: #efefef;
+}
+
+/***** BOOTSTRAP MODS ******/
+.navbar {
+    border-radius:0;
+}
+.navbar li {
+    font-size: 150%;
+}
