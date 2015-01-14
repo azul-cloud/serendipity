@@ -8,7 +8,10 @@ DATABASES['default'] =  dj_database_url.config()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Allow all host headers
-ALLOWED_HOSTS = ['blends']
+ALLOWED_HOSTS = [
+    'blends.herokuapps.com', 
+    'http://www.serendipityartisanblends.com', 
+    'http://serendipityartisanblends.com']
 
 # Static asset configuration
 STATIC_ROOT = 'staticfiles'
