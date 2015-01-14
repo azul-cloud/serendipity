@@ -9,9 +9,10 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Allow all host headers
 ALLOWED_HOSTS = [
-    'blends.herokuapps.com', 
-    'http://www.serendipityartisanblends.com', 
-    'http://serendipityartisanblends.com']
+    'blends.herokuapp.com', 
+    'www.serendipityartisanblends.com', 
+    'serendipityartisanblends.com'
+]
 
 # Static asset configuration
 STATIC_ROOT = 'staticfiles'
