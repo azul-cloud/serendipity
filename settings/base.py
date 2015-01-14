@@ -52,6 +52,7 @@ MIDDLEWARE_CLASSES = (
 
 TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
     'django.core.context_processors.request',
+    'products.context_processors.product_type_list',
 )
 
 ROOT_URLCONF = 'proj.urls'

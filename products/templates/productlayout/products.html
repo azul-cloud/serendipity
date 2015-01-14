@@ -8,18 +8,11 @@
         <li role="presentation" class="{% active_page request 'product_home' %}">
           <a href="{% url 'product_home' %}">All Products</a>
         </li>
-        <li role="presentation" class="{% if 'dip' in request.path_info %}active{% endif %}">
-          <a href="{% url 'product_type' 'dip' %}">Dips</a>
-        </li>
-        <li role="presentation" class="{% if 'rub' in request.path_info %}active{% endif %}">
-          <a href="{% url 'product_type' 'rub' %}">Rubs</a>
-        </li>
-        <li role="presentation" class="{% if 'mix' in request.path_info %}active{% endif %}">
-          <a href="{% url 'product_type' 'mix' %}">Mixes</a>
-        </li>
-        <li role="presentation" class="{% if 'marinade' in request.path_info %}active{% endif %}">
-          <a href="{% url 'product_type' 'marinade' %}">Marinades</a>
-        </li>
+        {% for t in product_type_list %}
+          <li role="presentation" class="{% if t.slug in request.path_info %}active{% endif %}">
+            <a href="{{ t.get_absolute_url }}">{{ t.plural }}</a>
+          </li>
+        {% endfor %}
       </ul>
     {% endblock %}
   </div>

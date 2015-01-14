@@ -33,10 +33,9 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <span class="glyphicon glyphicon glyphicon-shopping-cart"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Dips</a></li>
-            <li><a href="#">Rubs</a></li>
-            <li><a href="#">Mixes</a></li>
-            <li><a href="#">Marinades</a></li>
+            {% for t in product_type_list %}
+              <li><a href="{{ t.get_absolute_url }}">{{ t.plural }}</a></li>
+            {% endfor %}
             <li><a href="{% url 'product_home' %}">All Products</a></li>
             {% if user.is_staff %}
               <li class="divider"></li>
