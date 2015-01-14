@@ -4,6 +4,7 @@ body, html {
 }
 body {
     background-color: #efefef;
+    padding-top: 75px;
 }
 #wrap {
     min-height: 100%;
@@ -15,6 +16,19 @@ footer {
     background-color: #222;
     min-height:50px;
     padding: 20px 0;
+}
+img {
+    height: auoto;
+    width: 100%;
+}
+.border-bottom {
+    border-bottom: 5px solid #000;
+}
+
+/***** MAIN *****/
+#home-background {
+    margin-top: -20px;
+    filter: blur(5px);
 }
 
 

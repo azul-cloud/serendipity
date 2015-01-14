@@ -24,9 +24,11 @@
           <header>
             {% include "maininclude/header.html" %}
           </header>  
-          <div class="container-fluid">
+          {% block main_no_container %}
+            <div class="container">
               {% block main %}{% endblock %}
-          </div>
+            </div>
+          {% endblock %}
         </main>
       </div>
       {% include "maininclude/footer.html" %}

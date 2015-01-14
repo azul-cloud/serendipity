@@ -1,6 +1,10 @@
 {% extends "maininclude/base.html" %}
+{% load static %}
 
-{% block main %}
-    Home info will go here
+{% block main_no_container %}
+  <img id="home-background" src="{% static 'img/dip.jpg' %}" />
+  <div class="jumbotron">
+    <h1 class="text-center">Artisan Dips, Mixes, and Blends</h1>
+  </div>
 {% endblock %}
 
