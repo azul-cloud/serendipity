@@ -1,3 +1,4 @@
 manage.py
+staticfiles
 .idea/
 *.pyc
