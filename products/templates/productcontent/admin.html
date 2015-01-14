@@ -1,5 +1,8 @@
 {% extends "productlayout/admin.html" %}
 
-{% block main %}
-  This will be the admin home page
+{% block data %}
+  <div class="col-sm-8 col-sm-offset-2">
+    <h1 class="text-center">All Products</h1>
+    {% include "productinclude/tables/admin_home_products.html" %}
+  </div>
 {% endblock %}

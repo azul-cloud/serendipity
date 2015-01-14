@@ -9,20 +9,17 @@ from crispy_forms.layout import Layout, Div, Submit, Fieldset, ButtonHolder, Fie
 
 product_fields = ['title', 'description', 'type', 'price', 'contains', 'perks']
 
-class ProductCreateForm(ModelForm):
+
+class ProductBaseForm(ModelForm):
     description = forms.CharField(widget=forms.Textarea)
 
-    class Meta:
-        model = Product
-        fields = product_fields
-
     def __init__(self, *args, **kwargs):
-        super(ProductCreateForm, self).__init__(*args, **kwargs)
+        super(ProductBaseForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.layout = Layout(
             Fieldset(
-                '<h1>Create New Product</h1>',
-                Div('title', css_class="col-sm-12"),
+                self.form_title,
+                Div('title', css_class="col-sm-6 col-sm-offset-3"),
                 Div('description', css_class="col-sm-12"),
                 Div('type', css_class="col-sm-6"),
                 Div('price', css_class="col-sm-6"),
@@ -30,17 +27,23 @@ class ProductCreateForm(ModelForm):
                 Div('perks', css_class="col-sm-6"),
             ),
             ButtonHolder(
-                Submit('submit', 'Create New Item', css_class='btn-lg'),
-                css_class = "text-center"                
+                Submit('submit', self.btn_text, css_class='btn-lg'),
+                css_class = "text-center",
             ),
         )
 
-
-class ProductUpdateForm(ModelForm):
     class Meta:
         model = Product
         fields = product_fields
 
-    def __init__(self, *args, **kwargs):
-        super(ProductUpdateForm, self).__init__(*args, **kwargs)
-        self.helper = FormHelper()
+
+class ProductCreateForm(ProductBaseForm):
+    form_title = '<h1>Create New Product</h1>'
+    btn_text = 'Create New Item'
+
+
+class ProductUpdateForm(ProductBaseForm):
+    form_title = '<h1>Update Product</h1>'
+    btn_text = 'Update Item'
+
+

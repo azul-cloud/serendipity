@@ -1,6 +1,24 @@
 {% extends "productinclude/base.html" %}
-{# this layout is used for all of the product admin templates #}
+{% load main_extras %}
 
 {% block main %}
-
+  <div class="dash-container">
+    <div class="row full-height">
+      <div id="dash-menu" class="col-sm-2">
+        {% block menu %}
+          <ul class="nav nav-pills nav-stacked">
+            <li role="presentation" class="{% active_page request 'product_admin_home' %}">
+              <a href="{% url 'product_admin_home' %}">All Products</a>
+            </li>
+            <li role="presentation" class="{% active_page request 'product_create' %}">
+              <a href="{% url 'product_create' %}">Create Product</a>
+            </li>
+          </ul>
+        {% endblock %}
+      </div>
+      <div id="dash-data" class="col-sm-10">
+        {% block data %}{% endblock %}
+      </div>
+    </div>
+  </div>
 {% endblock %}

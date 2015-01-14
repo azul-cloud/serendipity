@@ -30,21 +30,25 @@ class ProductViewTest(ProductSetUp, WebTest):
         url = self.product.get_absolute_url()
         response = self.app.get(url, user=self.user)
 
+        assert self.product.title in response
+
     def test_admin_home(self):
         url = reverse(self.prefix + 'admin_home')
         response = self.app.get(url, user=self.user)
+
+        assert self.product.title in response
 
     def test_product_create(self):
         url = reverse(self.prefix + 'create')
         response = self.app.get(url, user=self.user)
 
+        assert "Create New Product" in response
+
     def test_product_update(self):
         url = self.product.get_update_url()
         response = self.app.get(url, user=self.user)
 
-    # def test_product_delete(self):
-    #     url = self.product.get_delete_url()
-    #     response = self.app.get(url, user=self.user)
+        assert "Update Product" in response
 
 
 class ProductFormTest(ProductSetUp, WebTest):
@@ -60,11 +64,10 @@ class ProductFormTest(ProductSetUp, WebTest):
         response = form.submit().follow()
 
         # make sure the response has the newly created post
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'My Test Mix')
+        assert 'My Test Mix' in response
 
     def test_product_update_form(self):
-        url = reverse(self.prefix + 'create')
+        url = self.product.get_update_url()
 
         form = self.app.get(url).form
         form['title'] = 'Edited Test Mix'
@@ -76,13 +79,6 @@ class ProductFormTest(ProductSetUp, WebTest):
 
         # make sure the response has the updated form
         assert 'Edited Test Mix' in response
-        assert 'My Test Mix' not in response
-
-    # def test_product_delete_form(self):
-    #     url = self.product.get_update_url()
-
-    #     click = index.click('delete-confirm').follow()
-
-    #     self.assertEqual(response.status_code, 200)
+        assert self.product.title not in response
     
 

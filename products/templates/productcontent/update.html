@@ -1,5 +1,6 @@
-{% extends "productlayout/admin.html" %}
+{% extends "productlayout/admin_single_form.html" %}
+{% load crispy_forms_tags %}
 
-{% block main %}
-  {{ form }}
+{% block form %}
+  {% crispy form %}
 {% endblock %}
