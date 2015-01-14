@@ -1,1 +1,1 @@
-web: gunicorn serendipity.wsgi --log-file -
+web: gunicorn proj.wsgi --log-file -
