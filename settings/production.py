@@ -1,5 +1,15 @@
 from .base import *
 
+DEBUG = False
+TEMPLATE_DEBUG = False
+
+if DEBUG:
+    STATICFILES_DIRS = (
+        os.path.join(BASE_DIR, 'static'),
+    )
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
 DATABASES['default'] =  dj_database_url.config()
@@ -13,11 +23,3 @@ ALLOWED_HOSTS = [
     'www.serendipityartisanblends.com', 
     'serendipityartisanblends.com'
 ]
-
-# Static asset configuration
-STATIC_ROOT = 'staticfiles'
-STATIC_URL = '/static/'
-
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
