@@ -1,0 +1,30 @@
+{% extends "maininclude/panels/default.html" %}
+
+{% block panel_title %}
+  {{ p.title }}
+{% endblock %}
+
+{% block panel_body %}
+  <div class="row">
+    <div class="col-xs-12">
+      {{ p.description }}
+    </div>
+  </div>
+  <div class="row margin-top product-panel-footer">
+    <div class="col-xs-6">
+      {% if p.contains.all %}
+        Contains 
+        {% for c in p.contains.all %}
+          {{ c }}{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+      {% endif %}
+    </div>
+    <div class="col-xs-6 text-right">
+      {% if p.perks.all %}
+        {% for p in p.perks.all %}
+          {{ p }}{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

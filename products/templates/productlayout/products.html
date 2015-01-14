@@ -1,0 +1,29 @@
+{% extends "productinclude/base.html" %}
+{% load main_extras %}
+
+{% block main %}
+  <div class="col-sm-2">
+    {% block menu %}
+      <ul class="nav nav-pills nav-stacked">
+        <li role="presentation" class="{% active_page request 'product_home' %}">
+          <a href="{% url 'product_home' %}">All Products</a>
+        </li>
+        <li role="presentation" class="{% if 'dip' in request.path_info %}active{% endif %}">
+          <a href="{% url 'product_type' 'dip' %}">Dips</a>
+        </li>
+        <li role="presentation" class="{% if 'rub' in request.path_info %}active{% endif %}">
+          <a href="{% url 'product_type' 'rub' %}">Rubs</a>
+        </li>
+        <li role="presentation" class="{% if 'mix' in request.path_info %}active{% endif %}">
+          <a href="{% url 'product_type' 'mix' %}">Mixes</a>
+        </li>
+        <li role="presentation" class="{% if 'marinade' in request.path_info %}active{% endif %}">
+          <a href="{% url 'product_type' 'marinade' %}">Marinades</a>
+        </li>
+      </ul>
+    {% endblock %}
+  </div>
+  <div class="col-sm-10">
+    {% block data %}{% endblock %}
+  </div>
+{% endblock %}

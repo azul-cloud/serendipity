@@ -25,6 +25,14 @@ class AdminUserFactory(UserFactory):
     first_name = 'Admin'
     last_name = 'User'
     is_staff = True
-    is_superuser = True
+    is_admin = True
+
+class StaffUserFactory(UserFactory):
+    username = 'staffuser'
+    password = 'staffpassword'
+    email = 'staff@email.com'
+    first_name = 'Staff'
+    last_name = 'User'
+    is_staff = True
 
 

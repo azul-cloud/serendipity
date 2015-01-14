@@ -10,7 +10,8 @@ urlpatterns = patterns('',
     url(r'admin/update/(?P<slug>\S+)/$', views.ProductUpdateView.as_view(), 
         name=prefix + "update"),
     url(r'admin/$', views.ProductAdminListView.as_view(), name=prefix + "admin_home"),
-
+    
+    url(r'type/(?P<slug>\S+)/$', views.ProductTypeDetailView.as_view(), name=prefix + "type"),
+    url(r'$', views.ProductListView.as_view(), name=prefix + "home"),
     url(r'(?P<slug>\S+)/$', views.ProductDetailView.as_view(), name=prefix + "detail"),
-    url(r'$', views.ProductHomeListView.as_view(), name=prefix + "home"),
 )

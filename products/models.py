@@ -21,6 +21,21 @@ class Perk(models.Model):
         return self.name
 
 
+class Type(SaveSlug):
+    # categorize products by type such as dip, mix, rub, or marinade
+    def __str__(self):
+        return self.title
+
+
+
+class AvailableProductManager(models.Manager):
+    '''
+    manager that will only return active posts
+    '''
+    def get_queryset(self):
+        return super(AvailableProductManager, self).get_queryset().filter(available=True)
+
+
 class Product(SaveSlug):
     # These are the products that are sold by Serendipity
     PRODUCT_TYPE_CHOICES = (
@@ -30,10 +45,14 @@ class Product(SaveSlug):
     )
 
     description = models.CharField(max_length=1024)
-    type = models.CharField(max_length=3, choices=PRODUCT_TYPE_CHOICES)
+    type = models.ForeignKey(Type, null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     contains = models.ManyToManyField(Ingredient, null=True, blank=True)
     perks = models.ManyToManyField(Perk, null=True, blank=True)
+    available = models.BooleanField(default=True)
+
+    active_objects = AvailableProductManager()
+    objects = models.Manager()
 
     def get_absolute_url(self):
         return reverse('product_detail', kwargs={'slug':self.slug})

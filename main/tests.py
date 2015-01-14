@@ -5,12 +5,15 @@ from django.test import TestCase
 from django_webtest import WebTest
 
 from .models import User
-from .factories import NormalUserFactory
+from .factories import NormalUserFactory, StaffUserFactory
+from products.factories import ProductFactory
 
 
 class MainSetUp(TestCase):
     def setUp(self):
-        self.user = NormalUserFactory
+        self.user = NormalUserFactory.create()
+        self.staff = StaffUserFactory.create()
+        self.product = ProductFactory.create(title="Main Test Product")
 
 
 class MainModelTest(MainSetUp):
@@ -29,6 +32,18 @@ class MainViewTest(MainSetUp, WebTest):
         url = reverse('main_home')
         response = self.app.get(url, user=self.user)
 
+        assert self.product.title in response
+
+    def test_product_admin(self):
+        url = reverse('main_home')
+        anon_response = self.app.get(url)
+        user_response = self.app.get(url, user=self.user) 
+        staff_response = self.app.get(url, user=self.staff)
+
+        assert 'Product Admin' not in anon_response
+        assert 'Product Admin' not in user_response
+        assert 'Product Admin' in staff_response
+
     def test_about(self):
         url = reverse('main_about')
         response = self.app.get(url, user=self.user)
@@ -36,24 +51,5 @@ class MainViewTest(MainSetUp, WebTest):
     def test_contact(self):
         url = reverse('main_contact')
         response = self.app.get(url, user=self.user)
-
-
-class MainFormTest(MainSetUp, WebTest):
-    def test_blog_create_form(self):
-        pass
-        # url = reverse('blog_create')
-
-        # post = {
-        #     "title":"Posted Title",
-        #     "headline":"My headline",
-        #     "body":"<h1>Incoming from test</h1>",
-        #     "city":self.city
-        # }
-
-        # response = self.app.post(url, post, user=self.user)
-
-        # # make sure the response has the newly created post
-        # self.assertEqual(response.status_code, 200)
-        # self.assertContains(response, post['title'])
     
 

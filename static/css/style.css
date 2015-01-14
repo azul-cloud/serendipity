@@ -21,20 +21,34 @@ img {
     height: auoto;
     width: 100%;
 }
+h1, h2, h3, h4 {
+    font-weight: 200;
+}
+
+/***** HELPER CLASSES *****/
 .border-bottom {
     border-bottom: 5px solid #000;
+}
+.margin-top {
+    margin-top: 15px;
+}
+.blur {
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -o-filter: blur(2px);
+    -ms-filter: blur(2px);
+    filter: blur(2px);
 }
 
 /***** MAIN *****/
 #home-background {
     margin-top: -20px;
-    filter: blur(5px);
 }
 
 
 /***** PRODUCT *****/
-.dash-container h1 {
-    text-align: center;
+.product-panel-footer {
+    font-weight: 800;
 }
 
 
@@ -43,5 +57,8 @@ img {
     border-radius:0;
 }
 .navbar li {
+    font-size: 150%;
+}
+.panel-title {
     font-size: 150%;
 }

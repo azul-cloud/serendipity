@@ -11,7 +11,7 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="{% url 'main_home' %}">
-        Serendipity Artisan Blends
+        >> Serendipity Logo <<
       </a>
     </div>
 
@@ -27,7 +27,6 @@
           <ul class="dropdown-menu" role="menu">
             <li><a href="{% url 'main_about' %}">About Us</a></li>
             <li><a href="{% url 'main_contact' %}">Contact Us</a></li>
-            <li class="divider"></li>
             <li><a href="#">Ordering Products</a></li>
           </ul>
         </li>
@@ -36,8 +35,13 @@
           <ul class="dropdown-menu" role="menu">
             <li><a href="#">Dips</a></li>
             <li><a href="#">Rubs</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Order Products</a></li>
+            <li><a href="#">Mixes</a></li>
+            <li><a href="#">Marinades</a></li>
+            <li><a href="{% url 'product_home' %}">All Products</a></li>
+            {% if user.is_staff %}
+              <li class="divider"></li>
+              <li><a href="{% url 'product_admin_home' %}">Product Admin</a></li>
+            {% endif %}
           </ul>
         </li>
       </ul>

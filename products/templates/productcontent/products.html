@@ -1,0 +1,15 @@
+{% extends "productlayout/products.html" %}
+
+{% block data %}
+  {% for p in product_list %}
+    {% if forloop.first or forloop.counter0|divisibleby:"2" %}<div class="row">{% endif %}
+      <div class="col-sm-6">
+        {% include "productinclude/panels/product.html" %}
+      </div>
+    {% if forloop.last or forloop.counter|divisibleby:"2" %}</div>{% endif %}
+  {% empty %}
+    <div class="well">
+      Sorry, there are no available {{ type|lower }} products.
+    </div>
+  {% endfor %}
+{% endblock %}

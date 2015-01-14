@@ -1,6 +1,6 @@
 from factory.django import DjangoModelFactory
 
-from .models import Product, Perk, Ingredient
+from .models import Product, Perk, Ingredient, Type
 
 
 class IngredientFactory(DjangoModelFactory):
@@ -17,11 +17,16 @@ class PerkFactory(DjangoModelFactory):
     name = "No MSG"
 
 
+class TypeFactory(DjangoModelFactory):
+    class Meta:
+        model = Type
+
+    title = "Mix"
+
+
 class ProductFactory(DjangoModelFactory):
     class Meta:
         model = Product
 
-    title = "Bacon Baked Potato"
     description = "This is a mix with bacon"
-    type = "MIX"
     price = 8.95
