@@ -37,6 +37,7 @@ INSTALLED_APPS = (
 
     'main',
     'products',
+    'crispy_forms'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -90,5 +91,7 @@ STATIC_URL = '/static/'
 
 
 AUTH_USER_MODEL = 'main.User'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 

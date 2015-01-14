@@ -32,7 +32,10 @@ class SaveSlug(models.Model):
         set the slug based on the title field
         '''
         self.slug = slugify(self.title)
-        super(SaveSlug, self).save(*args, **kwargs)   
+        super(SaveSlug, self).save(*args, **kwargs)  
+
+    def __str__(self):
+        return self.title 
 
 
 class User(AbstractUser):

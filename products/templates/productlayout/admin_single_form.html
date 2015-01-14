@@ -2,5 +2,8 @@
 {# this layout is used for all of the product admin templates #}
 
 {% block main %}
-
+  <div class="container product-admin-container">
+    <div class="col-sm-6 col-sm-offset-3"
+    {% block form %}{% endblock %}
+  </div>
 {% endblock %}

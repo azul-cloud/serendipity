@@ -19,12 +19,16 @@
         {% block extra_head %}{% endblock %}
     </head>
     <body>
-        {% include "maininclude/header.html" %}
-        <main id="main" role="main">
-            <div class="container-fluid">
-                {% block main %}
-                {% endblock %}
-            </div>
+      <div id="wrap">
+        <main role="main">
+          <header>
+            {% include "maininclude/header.html" %}
+          </header>  
+          <div class="container-fluid">
+              {% block main %}{% endblock %}
+          </div>
         </main>
+      </div>
+      {% include "maininclude/footer.html" %}
     </body>
 </html>

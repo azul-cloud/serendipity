@@ -9,10 +9,16 @@ class Ingredient(models.Model):
     # items that the product contains such as dairy, soy
     name = models.CharField(max_length=30)
 
+    def __str__(self):
+        return self.name
+
 
 class Perk(models.Model):
     # Products will have certain perks such as No MSG, Gluten Free
     name = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.name
 
 
 class Product(SaveSlug):
@@ -37,6 +43,3 @@ class Product(SaveSlug):
 
     def get_delete_url(self):
         return reverse('product_delete', kwargs={'slug':self.slug})
-
-    def __str__(self):
-        return self.title

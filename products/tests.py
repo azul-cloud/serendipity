@@ -30,6 +30,10 @@ class ProductViewTest(ProductSetUp, WebTest):
         url = self.product.get_absolute_url()
         response = self.app.get(url, user=self.user)
 
+    def test_admin_home(self):
+        url = reverse(self.prefix + 'admin_home')
+        response = self.app.get(url, user=self.user)
+
     def test_product_create(self):
         url = reverse(self.prefix + 'create')
         response = self.app.get(url, user=self.user)
@@ -38,34 +42,47 @@ class ProductViewTest(ProductSetUp, WebTest):
         url = self.product.get_update_url()
         response = self.app.get(url, user=self.user)
 
-    def test_product_delete(self):
-        url = self.product.get_delete_url()
-        response = self.app.get(url, user=self.user)
+    # def test_product_delete(self):
+    #     url = self.product.get_delete_url()
+    #     response = self.app.get(url, user=self.user)
 
 
 class ProductFormTest(ProductSetUp, WebTest):
     def test_product_create_form(self):
-        pass
+        url = reverse(self.prefix + 'create')
+
+        form = self.app.get(url).form
+        form['title'] = 'My Test Mix'
+        form['description'] = 'The Test Description'
+        form['type'] = 'MIX'
+        form['price'] = '5.95'
+
+        response = form.submit().follow()
+
+        # make sure the response has the newly created post
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'My Test Mix')
 
     def test_product_update_form(self):
-        pass
+        url = reverse(self.prefix + 'create')
 
-    def test_product_delete_form(self):
-        pass
+        form = self.app.get(url).form
+        form['title'] = 'Edited Test Mix'
+        form['description'] = 'The Test Description'
+        form['type'] = 'MIX'
+        form['price'] = '5.95'
 
-        # url = reverse('blog_create')
+        response = form.submit().follow()
 
-        # post = {
-        #     "title":"Posted Title",
-        #     "headline":"My headline",
-        #     "body":"<h1>Incoming from test</h1>",
-        #     "city":self.city
-        # }
+        # make sure the response has the updated form
+        assert 'Edited Test Mix' in response
+        assert 'My Test Mix' not in response
 
-        # response = self.app.post(url, post, user=self.user)
+    # def test_product_delete_form(self):
+    #     url = self.product.get_update_url()
 
-        # # make sure the response has the newly created post
-        # self.assertEqual(response.status_code, 200)
-        # self.assertContains(response, post['title'])
+    #     click = index.click('delete-confirm').follow()
+
+    #     self.assertEqual(response.status_code, 200)
     
 

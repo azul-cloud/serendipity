@@ -1,9 +1,28 @@
 body, html {
     font-family: "Open Sans", sans-serif;
+    height: 100%;
 }
 body {
     background-color: #efefef;
 }
+#wrap {
+    min-height: 100%;
+}
+main {
+    padding-bottom: 20px;
+}
+footer {
+    background-color: #222;
+    min-height:50px;
+    padding: 20px 0;
+}
+
+
+/***** PRODUCT *****/
+.product-admin-container h1 {
+    text-align: center;
+}
+
 
 /***** BOOTSTRAP MODS ******/
 .navbar {
