@@ -29,6 +29,14 @@ class MainViewTest(MainSetUp, WebTest):
         url = reverse('main_home')
         response = self.app.get(url, user=self.user)
 
+    def test_about(self):
+        url = reverse('main_about')
+        response = self.app.get(url, user=self.user)
+
+    def test_contact(self):
+        url = reverse('main_contact')
+        response = self.app.get(url, user=self.user)
+
 
 class MainFormTest(MainSetUp, WebTest):
     def test_blog_create_form(self):

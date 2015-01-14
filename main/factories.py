@@ -18,7 +18,7 @@ class NormalUserFactory(UserFactory):
     last_name = 'Doe'
 
 
-class AdminFactory(UserFactory):
+class AdminUserFactory(UserFactory):
     username = 'adminuser'
     password = 'adminpassword'
     email = 'admin@email.com'

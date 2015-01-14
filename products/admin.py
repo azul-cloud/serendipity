@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Product, Ingredient, Perk
+
+
+product_models = [Product, Ingredient, Perk]
+admin.site.register(product_models)
