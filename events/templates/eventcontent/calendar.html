@@ -1,0 +1,10 @@
+{% extends "eventinclude/base.html" %}
+{% load fullcalendar_tags %}
+
+{% block main %}
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      {% calendar %}
+    </div>
+  </div>
+{% endblock %}

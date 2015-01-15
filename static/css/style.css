@@ -63,3 +63,8 @@ h1, h2, h3, h4 {
 .panel-title {
     font-size: 150%;
 }
+
+/***** FULLCALENDAR *****/
+.fc-border-separate {
+    background-color: #fff;
+}

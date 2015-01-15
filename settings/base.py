@@ -37,7 +37,10 @@ INSTALLED_APPS = (
 
     'main',
     'products',
-    'crispy_forms'
+    'events',
+
+    'crispy_forms',
+    'fullcalendar',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -80,7 +83,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Los_Angeles'
 
 USE_I18N = True
 
