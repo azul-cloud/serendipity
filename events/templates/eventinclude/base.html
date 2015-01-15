@@ -1,0 +1,12 @@
+{% extends "maininclude/base.html" %}
+{% load fullcalendar_tags %}
+
+{% block extra_head %}
+  {% fullcalendar_css %}
+  {% fullcalendar_print_css %}
+  {% fullcalendar_jquery %}
+  {% fullcalendar_jquery_ui %}
+  {% fullcalendar_javascript %}
+
+  {% calendar_init calendar_config_options %}
+{% endblock %}
