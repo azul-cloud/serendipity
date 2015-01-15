@@ -28,10 +28,12 @@ class CalendarEvent(models.Model):
     start = models.DateTimeField(_('Start'))
     end = models.DateTimeField(_('End'))
     all_day = models.BooleanField(_('All day'), default=False)
+    description = models.TextField(null=True, blank=True)
+    location = models.CharField(max_length=100, null=True, blank=True)
 
     class Meta:
         verbose_name = _('Event')
         verbose_name_plural = _('Events')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title

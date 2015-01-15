@@ -4,6 +4,7 @@ from django.views.generic import TemplateView
 
 from fullcalendar.models import CalendarEvent
 from fullcalendar.utils import calendar_options, events_to_json
+from .utils import get_upcoming_events
 
 
 OPTIONS = """{  timeFormat: "H:mm",
@@ -42,6 +43,7 @@ class CalendarTemplateView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(CalendarTemplateView, self).get_context_data(**kwargs)
         context['calendar_config_options'] = calendar_options(self.event_url, OPTIONS)
+        context['next_events'] = get_upcoming_events()
         return context
 
 
@@ -52,3 +54,4 @@ def all_events(request):
     '''
     events = CalendarEvent.objects.all()
     return HttpResponse(events_to_json(events), content_type='application/json')
+

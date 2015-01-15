@@ -3,7 +3,51 @@
 
 {% block main %}
   <div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
+    <div class="col-sm-3">
+      <h2 class="text-center">Upcoming Events</h2>
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          {% for e in next_events %}
+            <div class="panel panel-primary">
+              <div class="panel-heading" role="tab" id="eventtab{{ forloop.counter }}">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#event{{ forloop.counter }}" aria-expanded="true" aria-controls="event{{ forloop.counter }}">
+                    {{ e.title }}
+                  </a>
+                </h4>
+              </div>
+              <div id="event{{ forloop.counter }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="event{{ forloop.counter }}">
+                <div class="panel-body event-panel">
+                  <div class="row">
+                    <div class="col-xs-12 text-center">
+                      <p>Start: {{ e.start }}</p>
+                      <p>End: {{ e.end }}</p>
+                    </div>
+                  </div>
+                  {% if e.description %}
+                    <div class="row border-top">
+                      <div class="col-xs-12">
+                        {{ e.description }}
+                      </div>
+                    </div>
+                  {% endif %}
+                  {% if e.location %}
+                    <div class="row border-top">
+                      <div class="col-xs-12 text-center">
+                        Location: {{ e.location }}
+                      </div>
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {% empty %}
+            <div class="well">
+              <h4>Oh no! There are no upcoming events :(</h4>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    <div class="col-sm-9 hidden-xs">
       {% calendar %}
     </div>
   </div>
