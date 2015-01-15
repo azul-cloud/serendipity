@@ -43,5 +43,7 @@ class User(AbstractUser):
     Extended User class. Set this up in the beginning unless you are
     absolutely sure the User class will not expand.
     '''
-    alive = models.BooleanField(default=True)
+    
+    class Meta:
+        db_table = 'auth_user'
     
