@@ -4,36 +4,8 @@ from django.views.generic import TemplateView
 
 from fullcalendar.models import CalendarEvent
 from fullcalendar.utils import calendar_options, events_to_json
-from .utils import get_upcoming_events
+from .utils import get_upcoming_events, OPTIONS
 
-
-OPTIONS = """{  timeFormat: "H:mm",
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'month,agendaWeek,agendaDay',
-                },
-                allDaySlot: false,
-                firstDay: 0,
-                weekMode: 'liquid',
-                slotMinutes: 15,
-                defaultEventMinutes: 30,
-                minTime: 8,
-                maxTime: 20,
-                editable: false,
-                dayClick: function(date, allDay, jsEvent, view) {
-                    if (allDay) {       
-                        $('#calendar').fullCalendar('gotoDate', date)      
-                        $('#calendar').fullCalendar('changeView', 'agendaDay')
-                    }
-                },
-                eventClick: function(event, jsEvent, view) {
-                    if (view.name == 'month') {     
-                        $('#calendar').fullCalendar('gotoDate', event.start)      
-                        $('#calendar').fullCalendar('changeView', 'agendaDay')
-                    }
-                },
-            }"""
 
 # Create your views here.
 class CalendarTemplateView(TemplateView):
