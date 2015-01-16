@@ -7,7 +7,7 @@ from django.views.generic.edit import CreateView, UpdateView
 from braces.views import StaffuserRequiredMixin
 from fullcalendar.utils import calendar_options, events_to_json
 
-from .utils import get_upcoming_events, OPTIONS
+from .utils import OPTIONS
 from .forms import EventCreateForm, EventUpdateForm
 from .models import Event
 
@@ -19,7 +19,7 @@ class CalendarTemplateView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(CalendarTemplateView, self).get_context_data(**kwargs)
         context['calendar_config_options'] = calendar_options(self.event_url, OPTIONS)
-        context['next_events'] = get_upcoming_events()
+        context['next_events'] = Event.objects.upcoming_events()
         return context
 
 

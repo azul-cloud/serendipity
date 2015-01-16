@@ -1,16 +1,4 @@
-from django.utils import timezone
-
 from .models import Event
-
-
-def get_upcoming_events():
-    try:
-        now = timezone.datetime.now()
-        cutoff = timezone.datetime.today() + timezone.timedelta(days=14)
-        events = Event.objects.filter(start__lt=cutoff)
-        return events
-    except:
-        return Event.objects.none()
 
 
 OPTIONS = """{  timeFormat: "H:mm",

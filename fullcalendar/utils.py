@@ -29,6 +29,13 @@ def snake_to_camel_case(s):
     """
     new_string = s
 
+    if new_string == "all_day":
+        '''
+        underscore is not working... For now just manually set it. There is 
+        a problem in convert_field_names that needs to be resolved
+        '''
+        return "allDay"
+
     leading_count = 0
     while new_string.find('_') == 0:
         new_string = new_string[1:]
