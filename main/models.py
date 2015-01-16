@@ -46,4 +46,15 @@ class User(AbstractUser):
     
     class Meta:
         db_table = 'auth_user'
+
+
+class RecipeIdea(models.Model):
+    '''
+    Simple model to give the readers some recipe and preparation ideas
+    '''
+    name = models.CharField(max_length=30)
+    description = models.CharField(max_length=300)
+
+    def __str__(self):
+        return self.name 
     

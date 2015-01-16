@@ -2,6 +2,8 @@ from factory.django import DjangoModelFactory
 
 from django.contrib.auth import get_user_model
 
+from .models import RecipeIdea
+
 User = get_user_model()
 
 
@@ -27,6 +29,7 @@ class AdminUserFactory(UserFactory):
     is_staff = True
     is_admin = True
 
+
 class StaffUserFactory(UserFactory):
     username = 'staffuser'
     password = 'staffpassword'
@@ -34,5 +37,10 @@ class StaffUserFactory(UserFactory):
     first_name = 'Staff'
     last_name = 'User'
     is_staff = True
+
+
+class RecipeIdeaFactory(DjangoModelFactory):
+    class Meta:
+        model = RecipeIdea
 
 

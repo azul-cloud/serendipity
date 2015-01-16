@@ -4,8 +4,8 @@ from django.test import TestCase
 
 from django_webtest import WebTest
 
-from .utils import get_upcoming_events
 from .factories import EventFactory
+from .models import Event
 from main.factories import NormalUserFactory, StaffUserFactory
 
 
@@ -32,10 +32,10 @@ class EventSetUp(TestCase):
         assert text in response
 
 
-class EventUtilTest(EventSetUp):
+class EventModelTest(EventSetUp):
     def test_upcoming(self):
         # get the upcoming events
-        events = get_upcoming_events()
+        events = Event.objects.upcoming_events()
         
         assert self.event in events
         assert self.far_event not in events

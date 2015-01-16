@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.views.generic import ListView
 
+from .models import RecipeIdea
 from products.models import Product
 
 
@@ -22,3 +23,8 @@ class AboutTemplateView(TemplateView):
 
 class ContactTemplateView(TemplateView):
     template_name = "maincontent/contact.html"
+
+
+class RecipeIdeasListView(ListView):
+    model = RecipeIdea
+    template_name = "maincontent/recipe_ideas.html"

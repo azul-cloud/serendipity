@@ -1,0 +1,54 @@
+{% extends "maininclude/base.html" %}
+
+{% block main %}
+  <div id="content-container">
+    <div class="row">
+      <div class="col-sm-offset-1 col-sm-10">
+        <div class="text-block">
+          <p>
+          All you need is a bowl for the dip and a platter or plate for the dippers, 
+          right? You knew that.
+          </p>
+          
+          <p>
+          But you may not have realized that a hollowed out round of French 
+          bread, small pumpkin, or melon, orange, or grapefruit, red or green 
+          cabbage, tomato, or head of lettuce, makes a great bowl. So does a 
+          large mug.
+          </p>
+          
+          <p>
+          But a neat, attractive arrangement of dippers, on a simple dish, is a 
+          real thing of beauty, too.
+          </p>
+
+          <p>
+          The case for our party dip recipes rests in their variety and versatility. 
+          They are quick and easy to prepare, attractive, and undemanding of 
+          the host. They taste great, and feed a crowd, too.
+          </p>
+
+          <p>
+          I am planning to fill this section with lots of 'scrummy' recipes - both 
+          yours, and ours - plus diplicious dishes that you can create using our 
+          mixes. In the meantime here are a few suggestions on how to use 
+          them.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="margin-top">
+      {% for i in recipeidea_list %}
+        {% if forloop.first or forloop.counter0|divisibleby:"3" %}<div class="row">{% endif %}
+          <div class="col-sm-4">
+            {% include "maininclude/panels/recipe_idea.html" %}
+          </div>
+        {% if forloop.last or forloop.counter|divisibleby:"3" %}</div>{% endif %}
+      {% empty %}
+        <div class="well">
+          Oops! Looks like there are no recipe ideas.
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

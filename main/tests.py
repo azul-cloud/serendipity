@@ -4,8 +4,8 @@ from django.test import TestCase
 
 from django_webtest import WebTest
 
-from .models import User
-from .factories import NormalUserFactory, StaffUserFactory
+from .models import User, RecipeIdea
+from .factories import NormalUserFactory, StaffUserFactory, RecipeIdeaFactory
 from products.factories import ProductFactory
 
 
@@ -13,15 +13,13 @@ class MainSetUp(TestCase):
     def setUp(self):
         self.user = NormalUserFactory.create()
         self.staff = StaffUserFactory.create()
+        self.recipe_idea = RecipeIdeaFactory.create()
         self.product = ProductFactory.create(title="Main Test Product")
 
 
 class MainModelTest(MainSetUp):
-
-    def test_model(self):
-        # instance = Model.objects.get(name = "Tag 1")
-        # self.assertNotEqual(instance.slug, None)
-        pass
+    def test_recipe(self):
+        recipe = RecipeIdea.objects.get(name=self.recipe_idea.name)
 
 
 class MainViewTest(MainSetUp, WebTest):
@@ -48,10 +46,16 @@ class MainViewTest(MainSetUp, WebTest):
 
     def test_about(self):
         url = reverse('main_about')
-        response = self.app.get(url, user=self.user)
+        response = self.app.get(url)
 
     def test_contact(self):
         url = reverse('main_contact')
-        response = self.app.get(url, user=self.user)
+        response = self.app.get(url)
+
+    def test_recipe_ideas(self):
+        url = reverse('main_recipe_ideas')
+        response = self.app.get(url)
+
+        assert self.recipe_idea.name in response
     
 
