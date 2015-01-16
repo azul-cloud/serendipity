@@ -15,7 +15,7 @@
                   </a>
                 </h4>
               </div>
-              <div id="event{{ forloop.counter }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="event{{ forloop.counter }}">
+              <div id="event{{ forloop.counter }}" class="panel-collapse collapse{% if forloop.first %} in{% endif %}" role="tabpanel" aria-labelledby="event{{ forloop.counter }}">
                 <div class="panel-body event-panel">
                   <div class="row">
                     <div class="col-xs-12 text-center">
