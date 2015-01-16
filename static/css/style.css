@@ -48,12 +48,15 @@ h1, h2, h3, h4 {
 #home-background {
     margin-top: -20px;
 }
-.admin-nav>li>a {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 30px;
-    border-top-right-radius: 30px;
-    font-size: 150%;
+
+@media (min-width: 768px) {
+    .admin-nav>li>a {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 30px;
+        border-top-right-radius: 30px;
+        font-size: 150%;
+    }
 }
 
 

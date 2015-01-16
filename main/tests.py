@@ -40,9 +40,11 @@ class MainViewTest(MainSetUp, WebTest):
         user_response = self.app.get(url, user=self.user) 
         staff_response = self.app.get(url, user=self.staff)
 
-        assert 'Product Admin' not in anon_response
-        assert 'Product Admin' not in user_response
-        assert 'Product Admin' in staff_response
+        admin_text = 'glyphicon-cog'
+
+        assert admin_text not in anon_response
+        assert admin_text not in user_response
+        assert admin_text in staff_response
 
     def test_about(self):
         url = reverse('main_about')

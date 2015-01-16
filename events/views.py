@@ -2,11 +2,11 @@ from django.shortcuts import render, HttpResponse
 from django.core.urlresolvers import reverse
 from django.views.generic import TemplateView
 from django.views.generic.list import ListView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 
 from fullcalendar.utils import calendar_options, events_to_json
 from .utils import get_upcoming_events, OPTIONS
-from .forms import EventCreateForm
+from .forms import EventCreateForm, EventUpdateForm
 from .models import Event
 
 # Create your views here.
@@ -38,4 +38,10 @@ class EventCreateView(CreateView):
     model = Event
     form_class = EventCreateForm
     template_name = "eventcontent/create.html"
+
+
+class EventUpdateView(UpdateView):
+    model = Event
+    form_class = EventUpdateForm
+    template_name = "eventcontent/update.html"
 

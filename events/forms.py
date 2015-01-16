@@ -11,7 +11,26 @@ event_fields = ['title', 'description', 'start', 'end', 'location']
 
 
 class EventBaseForm(ModelForm):
-    description = forms.CharField(widget=forms.Textarea)
+    start = forms.DateTimeField(
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': '2015-01-25 10:00'
+            }
+        ),
+        label="Start Datetime",
+        help_text="Sorry, start and end datetime are going to be weird for now." + \
+        " Please enter in the format listed above."
+    )
+    end = forms.DateTimeField(
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': '2015-01-25 14:00'
+            }
+        ),
+        label="Start Datetime",
+    )
+    description = forms.CharField(widget=forms.Textarea, required=False)
+    location = forms.CharField(help_text="Address, place name, etc", required=False)
 
     def __init__(self, *args, **kwargs):
         super(EventBaseForm, self).__init__(*args, **kwargs)

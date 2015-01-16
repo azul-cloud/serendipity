@@ -1,6 +1,9 @@
 # coding: utf-8
 import json
 
+from django.utils import timezone
+
+
 def date_handler(obj):
     """
     Handles JSON serialization for datetime values
