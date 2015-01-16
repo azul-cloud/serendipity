@@ -6,14 +6,30 @@ from django_webtest import WebTest
 
 from .utils import get_upcoming_events
 from .factories import EventFactory
+from main.factories import NormalUserFactory, StaffUserFactory
 
 
 class EventSetUp(TestCase):
     def setUp(self):
+        self.user = NormalUserFactory.create()
+        self.staff = StaffUserFactory.create()
         self.event = EventFactory.create()
         self.far_event = EventFactory.create(start=timezone.datetime.now() + timezone.timedelta(days=15))
 
         self.prefix = "events_"
+
+    def access_test(self, url, text):
+        '''
+        test access of a view. We'll test against an anon user, normal user,
+        and a staff user
+        '''
+        anon_response = self.app.get(url)
+        user_response = self.app.get(url, user=self.user)
+        response = self.app.get(url, user=self.staff)
+
+        assert anon_response.status_code == 302
+        assert text not in user_response
+        assert text in response
 
 
 class EventUtilTest(EventSetUp):
@@ -34,28 +50,22 @@ class EventViewTest(EventSetUp, WebTest):
 
     def test_event_admin_home(self):
         url = reverse(self.prefix + 'admin_home')
-        response = self.app.get(url)
-
-        assert self.event.title in response
+        self.access_test(url, self.event.title)
 
     def test_event_create(self):
         url = reverse(self.prefix + 'create')
-        response = self.app.get(url)
-
-        assert "Create New Event" in response
+        self.access_test(url, "Create New Event")
 
     def test_event_update(self):
         url = self.event.get_update_url()
-        response = self.app.get(url)
-
-        assert "Update Event" in response
+        self.access_test(url, "Update Event")
 
 
 class EventFormTest(EventSetUp, WebTest):
     def test_event_create_form(self):
         url = reverse(self.prefix + 'create')
 
-        form = self.app.get(url).form
+        form = self.app.get(url, user=self.staff).form
         form['title'] = 'My Test Event'
         form['start'] = '2015-01-25 10:00'
         form['end'] = '2015-01-25 14:00'
@@ -63,12 +73,12 @@ class EventFormTest(EventSetUp, WebTest):
         response = form.submit().follow()
 
         # make sure the response has the newly created post
-        assert 'My Test Event' in response
+        assert form['title'].value in response
 
     def test_event_update_form(self):
         url = self.event.get_update_url()
 
-        form = self.app.get(url).form
+        form = self.app.get(url, user=self.staff).form
         form['title'] = 'Edited Test Event'
         form['start'] = '2015-01-25 10:00'
         form['end'] = '2015-01-25 14:00'
@@ -76,6 +86,6 @@ class EventFormTest(EventSetUp, WebTest):
         response = form.submit().follow()
 
         # make sure the response has the updated form
-        assert 'Edited Test Event' in response
+        assert form['title'].value in response
         assert self.event.title not in response
 

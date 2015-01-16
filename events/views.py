@@ -4,7 +4,9 @@ from django.views.generic import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView
 
+from braces.views import StaffuserRequiredMixin
 from fullcalendar.utils import calendar_options, events_to_json
+
 from .utils import get_upcoming_events, OPTIONS
 from .forms import EventCreateForm, EventUpdateForm
 from .models import Event
@@ -29,18 +31,18 @@ def all_events(request):
     return HttpResponse(events_to_json(events), content_type='application/json')
 
 
-class EventAdminListView(ListView):
+class EventAdminListView(StaffuserRequiredMixin, ListView):
     model = Event
     template_name = "eventcontent/all.html"
 
 
-class EventCreateView(CreateView):
+class EventCreateView(StaffuserRequiredMixin, CreateView):
     model = Event
     form_class = EventCreateForm
     template_name = "eventcontent/create.html"
 
 
-class EventUpdateView(UpdateView):
+class EventUpdateView(StaffuserRequiredMixin, UpdateView):
     model = Event
     form_class = EventUpdateForm
     template_name = "eventcontent/update.html"

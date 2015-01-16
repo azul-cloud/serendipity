@@ -100,6 +100,9 @@ STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'main.User'
 
+LOGIN_URL = '/admin/login/'
+
+
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 

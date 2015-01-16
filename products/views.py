@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.views.generic import DetailView, ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
+from braces.views import StaffuserRequiredMixin
+
 from .models import Product, Type
 from .forms import ProductCreateForm, ProductUpdateForm
 
@@ -33,18 +35,18 @@ class ProductDetailView(DetailView):
     template_name = "productcontent/detail.html"
 
 
-class ProductAdminListView(ListView):
+class ProductAdminListView(StaffuserRequiredMixin, ListView):
     model = Product
     template_name = "productcontent/all.html"
 
 
-class ProductCreateView(CreateView):
+class ProductCreateView(StaffuserRequiredMixin, CreateView):
     model = Product
     form_class = ProductCreateForm
     template_name = "productcontent/create.html"
 
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(StaffuserRequiredMixin, UpdateView):
     model = Product
     form_class = ProductUpdateForm
     template_name = "productcontent/update.html"
