@@ -1,13 +1,13 @@
 {% extends "maininclude/tables/default.html" %}
 
 {% block tbody %}
-  {% for p in product_list %}
+  {% for o in object_list %}
     <tr>
       <td>
-        {{ p }}
+        {{ o }}
       </td>
       <td>
-        <a class="btn btn-success" href="{{ p.get_update_url }}">Edit 
+        <a class="btn btn-success" href="{{ o.get_update_url }}">Edit 
           <span class="glyphicon glyphicon-edit"></span></a>
       </td>
     </tr>

@@ -35,7 +35,7 @@ class ProductDetailView(DetailView):
 
 class ProductAdminListView(ListView):
     model = Product
-    template_name = "productcontent/admin.html"
+    template_name = "productcontent/all.html"
 
 
 class ProductCreateView(CreateView):

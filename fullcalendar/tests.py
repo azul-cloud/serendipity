@@ -36,15 +36,12 @@ class ConvertFieldNames(TestCase):
     def test_conversion(self):
         l = [{'start': '2013-11-27', 
              'end': '2013-11-29', 
-             'all_day': 'true', 
              '__size__': 1, 
-             '__to_string__': 'false'}]
+        }]
         self.assertEqual(convert_field_names(l), [{
             'start': '2013-11-27', 
             'end': '2013-11-29', 
-            'allDay': 'true', 
             '__size__': 1, 
-            '__toString__': 'false'
         }])
 
 

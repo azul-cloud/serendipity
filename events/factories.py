@@ -2,12 +2,12 @@ from django.utils import timezone
 
 from factory.django import DjangoModelFactory
 
-from fullcalendar.models import CalendarEvent
+from .models import Event
 
 
 class EventFactory(DjangoModelFactory):
     class Meta:
-        model = CalendarEvent
+        model = Event
 
     title = "Test Title"
     description = "This is the event description"
