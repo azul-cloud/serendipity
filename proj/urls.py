@@ -5,6 +5,7 @@ urlpatterns = patterns('',
     url(r'^', include('main.urls')),
     url(r'^products/', include('products.urls')),
     url(r'^events/', include('events.urls')),
+    url(r'^shopping/', include('shopping.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
 )

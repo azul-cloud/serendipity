@@ -9,6 +9,21 @@ from .factories import NormalUserFactory, StaffUserFactory, RecipeIdeaFactory
 from products.factories import ProductFactory
 
 
+class AccessMixin(object):
+    def access_test(self, url, text):
+        '''
+        test access of a view. We'll test against an anon user, normal user,
+        and a staff user
+        '''
+        anon_response = self.app.get(url)
+        user_response = self.app.get(url, user=self.user)
+        response = self.app.get(url, user=self.staff)
+
+        assert anon_response.status_code == 302
+        assert text not in user_response
+        assert text in response
+
+        
 class MainSetUp(TestCase):
     def setUp(self):
         self.user = NormalUserFactory.create()
@@ -28,7 +43,7 @@ class MainViewTest(MainSetUp, WebTest):
 
     def test_home(self):
         url = reverse('main_home')
-        response = self.app.get(url, user=self.user)
+        response = self.app.get(url)
 
         assert self.product.title in response
 

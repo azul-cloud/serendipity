@@ -1,0 +1,23 @@
+{% extends "maininclude/tables/default.html" %}
+{% load carton_tags %}
+
+{% block thead %}
+  <tr>
+    <td>Product</td>
+    <td>Quantity</td>
+    <td>Price</td>
+    <td>Item Total</td>
+  </tr>
+{% endblock %}
+
+{% block tbody %}
+  {% get_cart as cart %}
+  {% for item in cart.items %}
+    <tr>
+      <td>{{ item.product.title }}</td>
+      <td>{{ item.quantity }}</td>
+      <td>${{ item.price }}</td>
+      <td>${{ item.subtotal }}</td>
+    </tr>
+  {% endfor %}
+{% endblock %}

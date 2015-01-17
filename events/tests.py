@@ -7,9 +7,10 @@ from django_webtest import WebTest
 from .factories import EventFactory
 from .models import Event
 from main.factories import NormalUserFactory, StaffUserFactory
+from main.tests import AccessMixin
 
 
-class EventSetUp(TestCase):
+class EventSetUp(AccessMixin, TestCase):
     def setUp(self):
         self.user = NormalUserFactory.create()
         self.staff = StaffUserFactory.create()
@@ -17,19 +18,6 @@ class EventSetUp(TestCase):
         self.far_event = EventFactory.create(start=timezone.datetime.now() + timezone.timedelta(days=15))
 
         self.prefix = "events_"
-
-    def access_test(self, url, text):
-        '''
-        test access of a view. We'll test against an anon user, normal user,
-        and a staff user
-        '''
-        anon_response = self.app.get(url)
-        user_response = self.app.get(url, user=self.user)
-        response = self.app.get(url, user=self.staff)
-
-        assert anon_response.status_code == 302
-        assert text not in user_response
-        assert text in response
 
 
 class EventModelTest(EventSetUp):

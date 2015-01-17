@@ -28,21 +28,22 @@
             <li><a href="{% url 'main_recipe_ideas' %}">Recipe Ideas</a></li>
             <li><a href="{% url 'main_about' %}">About Us</a></li>
             <li><a href="{% url 'main_contact' %}">Contact Us</a></li>
-            <li><a href="#">Ordering Products</a></li>
           </ul>
         </li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <span class="glyphicon glyphicon glyphicon-shopping-cart"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <span class="glyphicon glyphicon-cutlery"></span></a>
           <ul class="dropdown-menu" role="menu">
             {% for t in product_type_list %}
               <li><a href="{{ t.get_absolute_url }}">{{ t.plural }}</a></li>
             {% endfor %}
             <li><a href="{% url 'product_home' %}">All Products</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Shopping Cart <span class="glyphicon glyphicon-shopping-cart"></span></a></li>
           </ul>
-          {% if user.is_staff %}
-            <li><a href="{% url 'product_admin_home' %}">Admin <span class="glyphicon glyphicon-cog"></span></a></li>
-          {% endif %}
         </li>
+        {% if user.is_staff %}
+          <li><a href="{% url 'product_admin_home' %}">Admin <span class="glyphicon glyphicon-cog"></span></a></li>
+        {% endif %}
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
