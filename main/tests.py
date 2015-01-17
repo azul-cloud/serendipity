@@ -52,14 +52,14 @@ class MainViewTest(MainSetUp, WebTest):
         url = reverse('main_contact')
         response = self.app.get(url)
 
-    def test_robots(self):
-        url = reverse('main_robots')
-        response = self.app.get(url)
-
     def test_recipe_ideas(self):
         url = reverse('main_recipe_ideas')
         response = self.app.get(url)
 
         assert self.recipe_idea.name in response
+
+    def test_robots(self):
+        url = reverse('main_robots')
+        response = self.app.get(url)
     
 

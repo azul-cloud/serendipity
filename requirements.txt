@@ -5,6 +5,7 @@ dj-static==0.0.6
 Django==1.7.3
 django-braces==1.4.0
 django-crispy-forms==1.4.0
+django-sslify==0.2.5
 django-webtest==1.7.7
 factory-boy==2.4.1
 gunicorn==19.1.1
