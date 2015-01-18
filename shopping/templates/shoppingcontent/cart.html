@@ -14,6 +14,16 @@
     <div class="cart-container">
       {% include "shoppinginclude/tables/cart.html" %}
     </div>
+    <form action="{% url 'shopping_charge' %}" method="POST">
+      {% csrf_token %}
+      <script
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="{{ STRIPE_PUBLIC_KEY }}"
+        data-name="Serendipity"
+        data-description="2 widgets ($20.00)"
+        data-amount="2000">
+      </script>
+    </form>
   {% else %}
     <div class="well">
       <div class="text-block text-center">

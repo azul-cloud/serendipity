@@ -99,14 +99,21 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 
-
 AUTH_USER_MODEL = 'main.User'
 
 LOGIN_URL = '/admin/login/'
 
 
+# crispy forms
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
+# carton
 CART_PRODUCT_MODEL = 'products.models.Product'
+
+# stripe
+STRIPE_PUBLIC_KEY = os.environ['STRIPE_PUBLIC_KEY']
+STRIPE_SECRET_KEY = os.environ['STRIPE_SECRET_KEY']
+
+
 
 
