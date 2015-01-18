@@ -22,6 +22,7 @@ requests-oauthlib==0.4.2
 six==1.9.0
 static==1.1.1
 static3==0.5.1
+stripe==1.20.1
 Unidecode==0.4.17
 waitress==0.8.9
 WebOb==1.4
