@@ -15,6 +15,10 @@ class ShoppingSetUp(TestCase):
 
 
 class ShoppingViewTest(ShoppingSetUp, WebTest):
+    ''' the cart tests in the ShoppingViewTest class are just testing against 
+        the URL and not actually going through the user motions, that part is 
+        done in the ShoppingFunctionTest class
+    '''
     def test_add_item(self):
         url1 = reverse(self.prefix + 'add', kwargs={'pk':self.product1.id})
         url2 = reverse(self.prefix + 'add', kwargs={'pk':self.product2.id})
@@ -36,4 +40,24 @@ class ShoppingViewTest(ShoppingSetUp, WebTest):
 
         assert response.status_code == 200
     
+
+class ShoppingFunctionTest(ShoppingSetUp, WebTest):
+    def test_add_item(self):
+        ''' in this test we will need to click on the element and make sure the
+            item was added and the button was changed correctly according to
+            script.js
+        '''
+        pass
+
+    def test_increment_item(self):
+        # In the cart click the button that increments the item in the cart.
+        pass
+
+    def test_decrement_item(self):
+        # In the cart click the button that decrements the item in the cart.
+        pass
+
+    def test_remove_item(self):
+        # In the cart click the button that removes the item from the cart
+        pass
 

@@ -1,5 +1,25 @@
 {% extends "shoppinginclude/base.html" %}
+{% load carton_tags %}
+{% load static %}
+
+{% block javascript %}
+  {{ block.super }}
+  <script src="{% static 'js/tooltip.js' %}"></script>
+{% endblock %}
 
 {% block main %}
-  {% include "shoppinginclude/tables/cart.html" %}
+  {% get_cart as cart %}
+  
+  {% if cart.items %}
+    <div class="cart-container">
+      {% include "shoppinginclude/tables/cart.html" %}
+    </div>
+  {% else %}
+    <div class="well">
+      <div class="text-block text-center">
+        <p>You don't have any items in your cart! View some items and add them to your cart.</p>
+        <a href="{% url 'product_home' %}" class="btn btn-primary btn-lg">Our Products  <span class="glyphicon glyphicon-chevron-right"></span></a>
+      </div>
+    </div>
+  {% endif %}
 {% endblock %}

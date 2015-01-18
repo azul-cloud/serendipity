@@ -3,21 +3,33 @@
 
 {% block thead %}
   <tr>
-    <td>Product</td>
-    <td>Quantity</td>
-    <td>Price</td>
-    <td>Item Total</td>
+    <th>Product</th>
+    <th>Quantity</th>
+    <th>Price</th>
+    <th>Item Total</th>
+    <th></th>
   </tr>
 {% endblock %}
 
 {% block tbody %}
   {% get_cart as cart %}
   {% for item in cart.items %}
-    <tr>
+    <tr id="product-row-{{ item.product.id }}" data-id="{{ item.product.id }}">
       <td>{{ item.product.title }}</td>
-      <td>{{ item.quantity }}</td>
-      <td>${{ item.price }}</td>
-      <td>${{ item.subtotal }}</td>
+      <td class="quantity">{{ item.quantity }}</td>
+      <td class="price">${{ item.price }}</td>
+      <td class="subtotal">${{ item.subtotal }}</td>
+      <td>
+        <button class="cart-increment-item btn btn-success">
+          <span class="glyphicon glyphicon-plus"></span>
+        </button> 
+        <button class="cart-decrement-item btn btn-warning">
+          <span class="glyphicon glyphicon-minus"></span>
+        </button> 
+        <button class="cart-remove-item btn btn-danger" data-toggle="tooltip" title="Remove this item">
+          <span class="glyphicon glyphicon-trash"></span>
+        </button> 
+      </td>
     </tr>
   {% endfor %}
 {% endblock %}

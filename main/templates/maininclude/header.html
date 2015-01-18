@@ -38,7 +38,7 @@
             {% endfor %}
             <li><a href="{% url 'product_home' %}">All Products</a></li>
             <li class="divider"></li>
-            <li><a href="#">Shopping Cart <span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+            <li class="text-center" id="cart"><a href="{% url 'shopping_cart' %}">My Cart <span class="glyphicon glyphicon-shopping-cart"></span></a></li>
           </ul>
         </li>
         {% if user.is_staff %}
