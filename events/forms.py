@@ -56,10 +56,10 @@ class EventBaseForm(ModelForm):
 
 
 class EventCreateForm(EventBaseForm):
-    form_title = '<h1>Create New Event</h1>'
+    form_title = '<h1 class="text-center">Create New Event</h1>'
     btn_text = 'Create New Event'
 
 
 class EventUpdateForm(EventBaseForm):
-    form_title = '<h1>Update Event</h1>'
+    form_title = '<h1 class="text-center">Update Event</h1>'
     btn_text = 'Update Event'

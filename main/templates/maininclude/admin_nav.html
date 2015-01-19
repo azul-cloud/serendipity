@@ -1,0 +1,47 @@
+<div class="panel-group" id="admin-nav-accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-primary">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#admin-nav-accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Products
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+      <a class="btn btn-default btn-block" href="{% url 'product_admin_home' %}">
+        View Products</a>
+      <a class="btn btn-default btn-block" href="{% url 'product_create' %}">
+        Create Product</a>
+    </div>
+  </div>
+  <div class="panel panel-primary">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#admin-nav-accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Events
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+        <a class="btn btn-default btn-block" href="{% url 'events_admin_home' %}">
+          View Events</a>
+        <a class="btn btn-default btn-block" href="{% url 'events_create' %}">
+          Create Event</a>
+    </div>
+  </div>
+  <div class="panel panel-primary">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#admin-nav-accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Sales
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      <a class="btn btn-default btn-block" href="{% url 'shopping_sales' %}">
+        View Sales</a>
+      <a class="btn btn-default btn-block" href="{% url 'shopping_sale_errors' %}">
+        Sale Errors</a>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,9 @@
-{% extends "mainlayout/admin.html" %}
+{% extends "mainlayout/admin_single_table.html" %}
 
-{% block data %}
+{% block title %}
+  All Sales
+{% endblock %}
+
+{% block table %}
   {% include "shoppinginclude/tables/sales.html" %}
 {% endblock %}

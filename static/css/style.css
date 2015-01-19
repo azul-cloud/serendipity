@@ -58,15 +58,23 @@ h1, h2, h3, h4 {
 #home-background {
     margin-top: -20px;
 }
-
-@media (min-width: 768px) {
-    .admin-nav>li>a {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 30px;
-        border-top-right-radius: 30px;
-        font-size: 150%;
+@media (min-width:768px) {
+    #admin-nav-accordion {
+        font-size: 125%;
     }
+    #admin-nav-accordion a {
+        font-size: 125%;
+    }
+}
+
+#admin-nav-accordion .panel {
+    border-color: #ddd;
+}
+
+#admin-nav-accordion a {
+    margin: 0;
+    border: none;
+    border-radius: 0;
 }
 
 

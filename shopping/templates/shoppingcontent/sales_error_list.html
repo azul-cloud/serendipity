@@ -1,8 +1,9 @@
-{% extends "mainlayout/admin.html" %}
+{% extends "mainlayout/admin_single_table.html" %}
 
-{% block data %}
-  <h2 class="text-center">Sale Errors</h2>
-  <div class="content-container">
-    {% include "shoppinginclude/tables/sale_errors.html" %}
-  </div>
+{% block title %}
+  Sale Errors
+{% endblock %}
+
+{% block table %}
+  {% include "shoppinginclude/tables/sale_errors.html" %}
 {% endblock %}

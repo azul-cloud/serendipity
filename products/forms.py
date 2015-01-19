@@ -38,12 +38,12 @@ class ProductBaseForm(ModelForm):
 
 
 class ProductCreateForm(ProductBaseForm):
-    form_title = '<h1>Create New Product</h1>'
+    form_title = '<h1 class="text-center">Create New Product</h1>'
     btn_text = 'Create New Item'
 
 
 class ProductUpdateForm(ProductBaseForm):
-    form_title = '<h1>Update Product</h1>'
+    form_title = '<h1 class="text-center">Update Product</h1>'
     btn_text = 'Update Item'
 
 

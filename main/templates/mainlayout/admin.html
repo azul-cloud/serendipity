@@ -1,31 +1,11 @@
 {% extends "maininclude/base.html" %}
-{% load main_extras %}
 
 {% block main_no_container %}
   <div class="dash-container">
     <div class="row">
-      <div id="dash-menu" class="col-sm-2">
+      <div id="dash-menu" class="col-sm-3">
         {% block menu %}
-          <ul class="nav nav-pills nav-stacked admin-nav">
-            <li role="presentation" class="{% active_page request 'product_admin_home' %}">
-              <a href="{% url 'product_admin_home' %}">Products</a>
-            </li>
-            <li role="presentation" class="{% active_page request 'product_create' %}">
-              <a href="{% url 'product_create' %}">Create Product</a>
-            </li>
-            <li role="presentation" class="{% active_page request 'events_admin_home' %}">
-              <a href="{% url 'events_admin_home' %}">Events</a>
-            </li>
-            <li role="presentation" class="{% active_page request 'events_create' %}">
-              <a href="{% url 'events_create' %}">Create Event</a>
-            </li>
-            <li role="presentation" class="{% active_page request 'shopping_sales' %}">
-              <a href="{% url 'shopping_sales' %}">Sales</a>
-            </li>
-            <li role="presentation" class="{% active_page request 'shopping_sale_errors' %}">
-              <a href="{% url 'shopping_sale_errors' %}">Sale Errors</a>
-            </li>
-          </ul>
+          {% include "maininclude/admin_nav.html" %}
         {% endblock %}
       </div>
       <div id="dash-data" class="col-sm-8">
