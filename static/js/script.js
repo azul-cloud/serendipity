@@ -34,7 +34,8 @@ $(document).ready(function() {
         url = shoppingRemoveUrl + id + '/',
         subtotalCell = row.find('td.subtotal'),
         subtotalStr = subtotalCell.text().replace('$', ''),
-        subtotal = parseFloat(subtotalStr) * -1;
+        subtotal = +parseFloat(subtotalStr) * -1;
+
         updateTotal(subtotal);
 
     $.get(url);
@@ -47,14 +48,11 @@ $(document).ready(function() {
         in the stripe button data-amount */
     var totalStr = shoppingTotalCell.text().replace('$', ''),
         originalTotal = parseFloat(totalStr),
-        newTotal = originalTotal + amount,
+        newTotal = Math.round(originalTotal + amount, 2),
         newStripeTotal = newTotal * 100,
         newTotalStr = newTotal.toFixed(2),
         amount_obj = $("#stripeAmount");
 
-    console.log(originalTotal);
-    console.log(amount);
-    console.log(newTotalStr);
     shoppingTotalCell.text('$' + newTotalStr);
     amount_obj.val(newStripeTotal);
   }
@@ -96,7 +94,8 @@ $(document).ready(function() {
     subtotalCell.text('$' + String(newSubtotal));
 
     // update the totals in the table and in the script data-amount
-    var changeAmount = parseFloat(newSubtotal - originalSubtotal);
+    var changeAmount = +parseFloat(newSubtotal - originalSubtotal).toFixed(2);
+
     updateTotal(changeAmount);
 
     // hit the server API URL
