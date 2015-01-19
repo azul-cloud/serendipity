@@ -1,0 +1,28 @@
+{% extends "maininclude/tables/default.html" %}
+
+{% block thead %}
+  <tr>
+    <th>Location</th>
+    <th>Message</th>
+    <th>Problem</th>
+    <th>Sale</th>
+  </tr>
+{% endblock %}
+
+
+{% block tbody %}
+  {% for e in saleerror_list %}
+    <tr>
+      <td>{{ e.get_location_display }}</td>
+      <td>{{ e.message }}</td>
+      <td>{{ e.problem }}</td>
+      <td>
+        {% if e.sale %}
+          <a class="btn btn-primary" href="{{ e.sale.get_absolute_url }}">
+            View Sale <span class="glyphicon glyphicon-eye-open"></span>
+          </a>
+        {% endif %}
+      </td>
+    </tr>
+  {% endfor %}
+{% endblock %}

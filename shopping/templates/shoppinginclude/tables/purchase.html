@@ -1,0 +1,25 @@
+{% extends "maininclude/tables/default.html" %}
+
+{% block thead %}
+  <tr>
+    <th>Product</th>
+    <th>Quantity</th>
+    <th>Price</th>
+  </tr>
+{% endblock %}
+
+
+{% block tbody %}
+  {% for s in sale.saleproduct_set.all %}
+    <tr>
+      <td>{{ s.product }}</td>
+      <td>{{ s.quantity }}</td>
+      <td>${{ s.price }}</td>
+    </tr>
+  {% endfor %}
+    <tr class="total-row">
+      <td></td>
+      <td></td>
+      <td>Total: ${{ sale.total }}</td>
+    </tr>
+{% endblock %}

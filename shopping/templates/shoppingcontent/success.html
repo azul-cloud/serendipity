@@ -1,0 +1,18 @@
+{% extends "shoppinginclude/base.html" %}
+
+{% block main %}
+  <div class="text-block">
+    <div class="alert alert-success">
+      Your purchase has been completed successfully. You should be receiving an email at {{ email }} 
+      with the payment confirmation.
+    </div>
+    {% if sale %}
+      <h1 class="text-center">Sale Information</h1>
+      <div class="col-sm-8 col-sm-offset-2">
+        <div class="content-container">
+          {% include "shoppinginclude/tables/purchase.html" %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}

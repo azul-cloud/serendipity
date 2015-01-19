@@ -8,16 +8,22 @@
         {% block menu %}
           <ul class="nav nav-pills nav-stacked admin-nav">
             <li role="presentation" class="{% active_page request 'product_admin_home' %}">
-              <a href="{% url 'product_admin_home' %}">All Products</a>
+              <a href="{% url 'product_admin_home' %}">Products</a>
             </li>
             <li role="presentation" class="{% active_page request 'product_create' %}">
               <a href="{% url 'product_create' %}">Create Product</a>
             </li>
             <li role="presentation" class="{% active_page request 'events_admin_home' %}">
-              <a href="{% url 'events_admin_home' %}">All Events</a>
+              <a href="{% url 'events_admin_home' %}">Events</a>
             </li>
             <li role="presentation" class="{% active_page request 'events_create' %}">
               <a href="{% url 'events_create' %}">Create Event</a>
+            </li>
+            <li role="presentation" class="{% active_page request 'shopping_sales' %}">
+              <a href="{% url 'shopping_sales' %}">Sales</a>
+            </li>
+            <li role="presentation" class="{% active_page request 'shopping_sale_errors' %}">
+              <a href="{% url 'shopping_sale_errors' %}">Sale Errors</a>
             </li>
           </ul>
         {% endblock %}

@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Sale, SaleProduct, SaleError
+
+
+shopping_models = [Sale, SaleProduct, SaleError]
+admin.site.register(shopping_models)

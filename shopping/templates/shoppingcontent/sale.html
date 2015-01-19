@@ -1,0 +1,31 @@
+{% extends "mainlayout/admin.html" %}
+
+{% block data %}
+  <div class="col-sm-6">
+    <h2 class="text-center">Sale Information</h2>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <span class="badge">{{ sale.email }}</span>
+        Email
+      </li>
+      <li class="list-group-item">
+        <span class="badge">${{ sale.total }}</span>
+        Total
+      </li>
+      <li class="list-group-item">
+        <span class="badge">{{ sale.created }}</span>
+        Purchase Date
+      </li>
+      <li class="list-group-item">
+        <span class="badge">{{ sale.get_status_display }}</span>
+        Status
+      </li>
+    </ul>
+  </div>
+  <div class="col-sm-6">
+    <h2 class="text-center">Sale Products</h2>
+    <div class="content-container">
+      {% include "shoppinginclude/tables/purchase.html" %}
+    </div>
+  </div>
+{% endblock %}

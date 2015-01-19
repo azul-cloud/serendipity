@@ -1,0 +1,25 @@
+{% extends "maininclude/tables/default.html" %}
+
+
+{% block thead %}
+  <tr>
+    <th>Purchase Date</th>
+    <th>Total</th>
+    <th>Status</th>
+    <th></th>
+  </tr>
+{% endblock %}
+
+
+{% block tbody %}
+  {% for s in sale_list %}
+    <tr>
+      <td>{{ s.created }}</td>
+      <td>${{ s.total }}</td>
+      <td>{{ s.get_status_display }}</td>
+      <td><a class="btn btn-primary" href="{{ s.get_absolute_url }}">
+        Details <span class="glyphicon glyphicon-eye-open"></span>
+      </a></td>
+    </tr>
+  {% endfor %}
+{% endblock %}

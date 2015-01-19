@@ -15,7 +15,7 @@
 {% block tbody %}
   {% get_cart as cart %}
   {% for item in cart.items %}
-    <tr id="product-row-{{ item.product.id }}" data-id="{{ item.product.id }}">
+    <tr id="product-row-{{ item.product.id }}" class="product-row" data-id="{{ item.product.id }}">
       <td>{{ item.product.title }}</td>
       <td class="quantity">{{ item.quantity }}</td>
       <td class="price">${{ item.price }}</td>
@@ -49,6 +49,18 @@
 
           <script>
             $('#stripe-button').click(function(){
+              // build a JSON object that gives us the product ids and quantity
+              var objects = []; 
+              $(".product-row").each( function(x){
+                var productObject = new Object();
+                productObject.id = this.id.replace('product-row-', '');
+                productObject.quantity = $(this).find('td.quantity').text();
+                objects.push(productObject)
+              })
+
+              var productString = JSON.stringify(objects);
+              $("#products-input").val(productString);
+
               var token = function(res){
                 var $id = $('<input type=hidden name=stripeToken />').val(res.id);
                 var $email = $('<input type=hidden name=stripeEmail />').val(res.email);
@@ -70,6 +82,7 @@
             });
           </script>
           <input id="stripeAmount" name="stripeAmount" class="hidden" value="{{ cart_stripe_total }}"></input>
+          <input id="products-input" name="products" class="hidden"></input>
         </form>
       </td>
     </tr>
