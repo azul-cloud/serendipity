@@ -47,11 +47,16 @@ $(document).ready(function() {
     /* update the total in the cart in both the table cell and
         in the stripe button data-amount */
     var totalStr = shoppingTotalCell.text().replace('$', ''),
-        originalTotal = parseFloat(totalStr),
-        newTotal = Math.round(originalTotal + amount, 2),
+        originalTotal = +parseFloat(totalStr),
+        newTotal = +parseFloat(originalTotal + amount).toFixed(2),
         newStripeTotal = newTotal * 100,
         newTotalStr = newTotal.toFixed(2),
         amount_obj = $("#stripeAmount");
+
+        console.log("amount - " + amount);
+        console.log("origTotal - " + originalTotal);
+        console.log("newTotal - " + newTotal);
+        console.log("newStripe - " + newStripeTotal);
 
     shoppingTotalCell.text('$' + newTotalStr);
     amount_obj.val(newStripeTotal);
@@ -79,7 +84,7 @@ $(document).ready(function() {
     if (action == "increment") {
         quantity += 1;
     }
-    else if (action == "decrement") {
+    else if (action == "decrement" && quantity > 0) {
         quantity -= 1;
     }
 
