@@ -1,5 +1,6 @@
 {% extends "maininclude/tables/default.html" %}
 {% load carton_tags %}
+{% load static %}
 
 {% block thead %}
   <tr>
@@ -22,7 +23,7 @@
       <td>
         <button class="cart-increment-item btn btn-success">
           <span class="glyphicon glyphicon-plus"></span>
-        </button> 
+        </button>
         <button class="cart-decrement-item btn btn-warning">
           <span class="glyphicon glyphicon-minus"></span>
         </button> 
@@ -32,4 +33,44 @@
       </td>
     </tr>
   {% endfor %}
+    <tr class="total-row">
+      <td></td>
+      <td></td>
+      <td class="text-right">Total:</td>
+      <td id="total-cell">${{ cart.total }}</td>
+      <td>
+        <form action="{% url 'shopping_charge' %}" method="POST" id="stripe-form">
+          {% csrf_token %}
+          <script src="https://checkout.stripe.com/checkout.js"></script>
+
+          <button class="btn btn-primary btn-lg" id="stripe-button">
+            Checkout <span class="glyphicon glyphicon-shopping-cart"></span>
+          </button>
+
+          <script>
+            $('#stripe-button').click(function(){
+              var token = function(res){
+                var $id = $('<input type=hidden name=stripeToken />').val(res.id);
+                var $email = $('<input type=hidden name=stripeEmail />').val(res.email);
+                $('form').append($id).append($email).submit();
+              };
+
+              var amount = $("#stripeAmount").val();
+              StripeCheckout.open({
+                key:         '{{ STRIPE_PUBLIC_KEY }}',
+                amount:      amount,
+                name:        'Serendipity Artisan Blends',
+                image:       '{% static "img/marketplace.png" %}',
+                description: 'Purchas Products',
+                panelLabel:  'Checkout',
+                token:       token
+              });
+
+              return false;
+            });
+          </script>
+          <input id="stripeAmount" name="stripeAmount" class="hidden" value="{{ cart_stripe_total }}"></input>
+        </form>
+      </td>
+    </tr>
 {% endblock %}

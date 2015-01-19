@@ -119,3 +119,6 @@ li#cart a:hover {
 .cart-container > table th {
     font-size: 150%;
 }
+.total-row {
+    font-size: 125%;
+}

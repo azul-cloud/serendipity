@@ -28,6 +28,12 @@ class ShoppingViewTest(ShoppingSetUp, WebTest):
         assert "Added" in response1
         assert "Added" in response2
 
+    def test_remove_single_item(self):
+        url = reverse(self.prefix + 'remove_single', kwargs={'pk':self.product2.id})
+        response = self.app.get(url)
+
+        assert "Removed Single" in response
+
     def test_remove_item(self):
         url = reverse(self.prefix + 'remove', kwargs={'pk':self.product2.id})
         response = self.app.get(url)

@@ -17,6 +17,14 @@ class AddView(TemplateView):
         return HttpResponse("Added")
 
 
+class RemoveSingleView(TemplateView):
+    def get(self, request, *args, **kwargs):
+        cart = Cart(request.session)
+        product = Product.objects.get(id=kwargs["pk"])
+        cart.remove_single(product)
+        return HttpResponse("Removed Single " + str(product))
+
+
 class RemoveView(TemplateView):
     def get(self, request, *args, **kwargs):
         cart = Cart(request.session)
@@ -32,6 +40,7 @@ class CartTemplateView(TemplateView):
         # only return the active products
         context = super(CartTemplateView, self).get_context_data(**kwargs)
         context['STRIPE_PUBLIC_KEY'] = settings.STRIPE_PUBLIC_KEY
+        context['cart_stripe_total'] = Cart(self.request.session).total * 100
         return context
 
 
@@ -42,18 +51,16 @@ def charge(request):
     '''
     stripe.api_key = settings.STRIPE_SECRET_KEY
 
-    # Get the credit card details submitted by the form
-    token = request.POST['stripeToken']
-
     # Create the charge on Stripe's servers - this will charge the user's card
     try:
       charge = stripe.Charge.create(
-          amount=1000, # amount in cents, again
+          amount=request.POST['stripeAmount'], # amount in cents, again
           currency="usd",
-          card=token,
+          card=request.POST['stripeToken'],
           description=request.POST['stripeEmail']
       )
       return HttpResponse("Charge successful!")
+      cart = Cart(request.session).clear()
     except stripe.CardError as e:
       # The card has been declined
       return HttpResponse("There was a card error: " + e)
