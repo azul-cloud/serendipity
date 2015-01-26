@@ -40,6 +40,7 @@ h1, h2, h3, h4 {
 }
 .social-link-container > img:hover {
     opacity: 0.5;
+    width:25%;
 }
 @media (max-width:768px) {
     .navbar-nav>li>.social-link-container>img {
