@@ -1,8 +1,8 @@
 from .base import *
 
 
-DEBUG = False
-TEMPLATE_DEBUG = False
+DEBUG = True
+TEMPLATE_DEBUG = True
 
 if DEBUG:
     STATICFILES_DIRS = (
@@ -20,7 +20,7 @@ DATABASES['default'] =  dj_database_url.config()
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-MIDDLEWARE_CLASSES.append(
+MIDDLEWARE_CLASSES = global_settings.MIDDLEWARE_CLASSES + (
     'sslify.middleware.SSLifyMiddleware',
 )
 
