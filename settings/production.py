@@ -1,8 +1,8 @@
 from .base import *
 
 
-DEBUG = True
-TEMPLATE_DEBUG = True
+DEBUG = False
+TEMPLATE_DEBUG = False
 
 if DEBUG:
     STATICFILES_DIRS = (
@@ -19,11 +19,6 @@ DATABASES['default'] =  dj_database_url.config()
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
-MIDDLEWARE_CLASSES += (
-    'sslify.middleware.SSLifyMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-)
 
 
 # Allow all host headers
