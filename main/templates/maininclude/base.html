@@ -10,11 +10,6 @@
           <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
           <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,300' rel='stylesheet' type='text/css'>
         {% endblock %}
-        {% block javascript %}
-          <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-          <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-          <script src="{% static 'js/script.js' %}"></script>
-        {% endblock %}
         {% block meta_tags %}
           <meta name="viewport" content="width=device-width, initial-scale=1">
         {% endblock %}
@@ -34,5 +29,10 @@
         </main>
       </div>
       {% include "maininclude/footer.html" %}
+      {% block javascript %}
+          <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+          <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+          <script src="{% static 'js/script.js' %}"></script>
+        {% endblock %}
     </body>
 </html>

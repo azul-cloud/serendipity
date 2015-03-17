@@ -32,15 +32,14 @@ h1, h2, h3, h4 {
     padding-top: 10px;
     padding-bottom: 10px;
 }
-.social-link-container > img {
+.social-link-container img {
     border-radius: 50%;
     width: 20%;
     transition: all 1s ease;
-    opacity: 1;
+    opacity: 0.8;
 }
-.social-link-container > img:hover {
-    opacity: 0.5;
-    width:25%;
+.social-link-container > a > img:hover {
+    opacity: 1;
 }
 @media (max-width:768px) {
     .navbar-nav>li>.social-link-container>img {
