@@ -2,3 +2,4 @@ staticfiles
 server
 .idea/
 *.pyc
+media/
