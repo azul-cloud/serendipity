@@ -1,0 +1,33 @@
+li#cart {
+  background-color: #428bca;
+  color: #000;
+  margin:-10px inherit;
+  padding: 10px inherit;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+
+  a {
+    transition: all 0.5s ease;
+    color: white;
+  }
+
+  a:hover {
+    background-color: #428bca;
+    color: black;
+  }
+}
+
+.cart-container {
+  > table {
+    background-color: white;
+    border-radius: 5px;
+  }
+
+  > table th {
+    font-size: 150%;
+  }
+}
+
+.total-row {
+  font-size: 125%;
+}

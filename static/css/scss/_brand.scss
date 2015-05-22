@@ -1,0 +1,22 @@
+@import 'variables';
+
+.btn-green {
+  transition: 0.5s;
+  background-color: $green;
+  border-color: $green-light;
+
+  &:hover {
+    background-color: $green-light;
+  }
+
+  color: white;
+}
+
+.panel-green {
+  border-color: darken($gray, 10%);
+
+  .panel-heading {
+    background-color: $green;
+    color: white;
+  }
+}

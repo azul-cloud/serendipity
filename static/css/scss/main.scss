@@ -1,12 +1,16 @@
 @import 'variables';
+@import 'shopping';
+@import 'bootstrap-custom';
+@import 'brand';
 @import 'small';
 
 body, html {
   font-family: "Open Sans", sans-serif;
+  color: $dark-transparent;
   height: 100%;
 }
 body {
-  background-color: #efefef;
+  background-color: white;
   padding-top: 75px;
 }
 #wrap {
@@ -16,7 +20,7 @@ main {
   padding-bottom: 20px;
 }
 footer {
-  background-color: #222;
+  background-color: $dark-transparent;
   min-height:50px;
   padding: 20px 0;
   color: #efefef;
@@ -28,24 +32,15 @@ img {
 h1, h2, h3, h4 {
   font-weight: 200;
 }
-.border-bottom {
-  border-bottom: 5px solid #222;
-}
-.border-top {
-  border-top: 1px solid #efefef;
-}
-.margin-top {
-  margin-top: 15px;
-}
 
 .social-link-container {
   text-align: center;
   
   img {
     border-radius: 50%;
-    width: 20%;
+    width: 30px;
     transition: all 1s ease;
-    opacity: 0.8;
+    opacity: 0.6;
   }
 
   > a > img:hover {
@@ -66,11 +61,12 @@ h1, h2, h3, h4 {
 }
 
 .blur {
-  -webkit-filter: blur(2px);
-  -moz-filter: blur(2px);
-  -o-filter: blur(2px);
-  -ms-filter: blur(2px);
-  filter: blur(2px);
+  $blur: 5px;
+  -webkit-filter: blur($blur);
+  -moz-filter: blur($blur);
+  -o-filter: blur($blur);
+  -ms-filter: blur($blur);
+  filter: blur($blur);
 }
 .text-block {
   font-size: 120%;
@@ -96,21 +92,17 @@ h1, h2, h3, h4 {
 
 
 /***** PRODUCT *****/
-.product-panel-footer {
-  font-weight: 800;
-}
-
-
-/***** BOOTSTRAP MODS ******/
-.navbar {
-  border-radius:0;
-
-  li {
-    font-size: 150%;
+.product-panel {
+  img {
+    margin-bottom: 15px;
   }
-}
-.panel-title {
-  font-size: 150%;
+
+  .product-panel-footer {
+    font-weight: 800;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    opacity: 0.5;
+  }
 }
 
 /***** EVENTS *****/
@@ -121,37 +113,3 @@ h1, h2, h3, h4 {
   padding: 15px;
 }
 
-/***** SHOPPING *****/
-li#cart {
-  background-color: #428bca;
-  color: #000;
-  margin:-10px inherit;
-  padding: 10px inherit;
-  border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 5px;
-
-  a {
-    transition: all 0.5s ease;
-    color: white;
-  }
-
-  a:hover {
-    background-color: #428bca;
-    color: black;
-  }
-}
-
-.cart-container {
-  > table {
-    background-color: white;
-    border-radius: 5px;
-  }
-
-  > table th {
-    font-size: 150%;
-  }
-}
-
-.total-row {
-  font-size: 125%;
-}

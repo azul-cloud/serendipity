@@ -1,6 +1,8 @@
 from django.core.urlresolvers import reverse
 from django.db import models
+from django.templatetags.static import static
 from django.utils.text import slugify
+
 
 from main.models import SaveSlug
 
@@ -31,7 +33,7 @@ class Type(SaveSlug):
 
 class AvailableProductManager(models.Manager):
     '''
-    manager that will only return active posts
+    manager that will only return active products
     '''
     def get_queryset(self):
         return super(AvailableProductManager, self).get_queryset().filter(available=True)
@@ -51,12 +53,20 @@ class Product(SaveSlug):
     contains = models.ManyToManyField(Ingredient, null=True, blank=True)
     perks = models.ManyToManyField(Perk, null=True, blank=True)
     available = models.BooleanField(default=True)
+    picture = models.ImageField(null=True, blank=True)
 
     active_objects = AvailableProductManager()
     objects = models.Manager()
 
     def __str__(self):
         return self.title
+
+    def get_picture_location(self):
+        # for now just have the picture be the default
+        if self.picture:
+            return static('img/default.jpeg')
+        else:
+            return static('img/default.jpeg')
 
     def get_absolute_url(self):
         return reverse('product_detail', kwargs={'slug':self.slug})
