@@ -1,154 +1,134 @@
+@media (max-width: 768px) {
+  .navbar-nav > li > .social-link-container > img {
+    border-radius: 50%;
+    width: 10%; }
+
+  #admin-nav-accordion {
+    font-size: 125%; }
+
+  #admin-nav-accordion a {
+    font-size: 125%; } }
 body, html {
-    font-family: "Open Sans", sans-serif;
-    height: 100%;
-}
+  font-family: "Open Sans", sans-serif;
+  height: 100%; }
+
 body {
-    background-color: #efefef;
-    padding-top: 75px;
-}
+  background-color: #efefef;
+  padding-top: 75px; }
+
 #wrap {
-    min-height: 100%;
-}
+  min-height: 100%; }
+
 main {
-    padding-bottom: 20px;
-}
+  padding-bottom: 20px; }
+
 footer {
-    background-color: #222;
-    min-height:50px;
-    padding: 20px 0;
-    color: #efefef;
-}
+  background-color: #222;
+  min-height: 50px;
+  padding: 20px 0;
+  color: #efefef; }
+
 img {
-    height: auoto;
-    width: 100%;
-}
+  height: auoto;
+  width: 100%; }
+
 h1, h2, h3, h4 {
-    font-weight: 200;
-}
+  font-weight: 200; }
+
+.border-bottom {
+  border-bottom: 5px solid #222; }
+
+.border-top {
+  border-top: 1px solid #efefef; }
+
+.margin-top {
+  margin-top: 15px; }
+
 .social-link-container {
-    text-align: center;
-}
-.navbar-nav>li>.social-link-container {
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-.social-link-container img {
+  text-align: center; }
+  .social-link-container img {
     border-radius: 50%;
     width: 20%;
     transition: all 1s ease;
-    opacity: 0.8;
-}
-.social-link-container > a > img:hover {
-    opacity: 1;
-}
-@media (max-width:768px) {
-    .navbar-nav>li>.social-link-container>img {
-        border-radius: 50%;
-        width: 10%;
-    }   
-} 
+    opacity: 0.8; }
+  .social-link-container > a > img:hover {
+    opacity: 1; }
+
+.navbar-nav > li > .social-link-container {
+  padding-top: 10px;
+  padding-bottom: 10px; }
 
 /***** HELPER CLASSES *****/
 .content-container {
-    background-color: #fff;
-    border-radius: 5px;
-    padding: 30px;
-    border: 1px solid #ddd;
-}
-.border-bottom {
-    border-bottom: 5px solid #222;
-}
-.border-top {
-    border-top: 1px solid #efefef;
-}
-.margin-top {
-    margin-top: 15px;
-}
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 30px;
+  border: 1px solid #ddd; }
+
 .blur {
-    -webkit-filter: blur(2px);
-    -moz-filter: blur(2px);
-    -o-filter: blur(2px);
-    -ms-filter: blur(2px);
-    filter: blur(2px);
-}
+  -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -o-filter: blur(2px);
+  -ms-filter: blur(2px);
+  filter: blur(2px); }
+
 .text-block {
-    font-size: 120%;
-    font-weight: 100;
-}
+  font-size: 120%;
+  font-weight: 100; }
 
 /***** MAIN *****/
 #home-background {
-    margin-top: -20px;
-}
-@media (min-width:768px) {
-    #admin-nav-accordion {
-        font-size: 125%;
-    }
-    #admin-nav-accordion a {
-        font-size: 125%;
-    }
-}
+  margin-top: -20px; }
 
 #admin-nav-accordion .panel {
-    border-color: #ddd;
-}
-
+  border-color: #ddd; }
 #admin-nav-accordion a {
-    margin: 0;
-    border: none;
-    border-radius: 0;
-}
-
+  margin: 0;
+  border: none;
+  border-radius: 0; }
 
 /***** PRODUCT *****/
 .product-panel-footer {
-    font-weight: 800;
-}
-
+  font-weight: 800; }
 
 /***** BOOTSTRAP MODS ******/
 .navbar {
-    border-radius:0;
-}
-.navbar li {
-    font-size: 150%;
-}
+  border-radius: 0; }
+  .navbar li {
+    font-size: 150%; }
+
 .panel-title {
-    font-size: 150%;
-}
+  font-size: 150%; }
 
 /***** EVENTS *****/
 .fc-border-separate {
-    background-color: #fff;
-}
+  background-color: #fff; }
+
 .event-panel > .row {
-    padding: 15px;
-}
+  padding: 15px; }
 
 /***** SHOPPING *****/
 li#cart {
-    background-color: #428bca;
-    color: #000;
-    margin:-10px inherit;
-    padding: 10px inherit;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-}
-li#cart a {
+  background-color: #428bca;
+  color: #000;
+  margin: -10px inherit;
+  padding: 10px inherit;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px; }
+  li#cart a {
     transition: all 0.5s ease;
-    color: white;
-}
-li#cart a:hover {
+    color: white; }
+  li#cart a:hover {
     background-color: #428bca;
-    color: black;
-}
+    color: black; }
+
 .cart-container > table {
-    background-color: white;
-    border-radius: 5px;
-}
+  background-color: white;
+  border-radius: 5px; }
 .cart-container > table th {
-    font-size: 150%;
-}
+  font-size: 150%; }
+
 .total-row {
-    font-size: 125%;
-}
+  font-size: 125%; }
+
+/*# sourceMappingURL=style.css.map */

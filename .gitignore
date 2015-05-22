@@ -3,3 +3,4 @@ server
 .idea/
 *.pyc
 media/
+sass-cache/
