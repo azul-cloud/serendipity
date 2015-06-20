@@ -53,7 +53,8 @@ class EventFormTest(EventSetUp, WebTest):
     def test_event_create_form(self):
         url = reverse(self.prefix + 'create')
 
-        form = self.app.get(url, user=self.staff).form
+        response = self.app.get(url, user=self.staff)
+        form = response.form
         form['title'] = 'My Test Event'
         form['start'] = '2015-01-25 10:00'
         form['end'] = '2015-01-25 14:00'

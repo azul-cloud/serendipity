@@ -7,7 +7,7 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Submit, Fieldset, ButtonHolder, Field, Button
 
 
-product_fields = ['title', 'description', 'type', 'price', 'contains', 'perks']
+product_fields = ['title', 'description', 'type', 'price', 'contains', 'perks', 'picture']
 
 
 class ProductBaseForm(ModelForm):
@@ -19,7 +19,8 @@ class ProductBaseForm(ModelForm):
         self.helper.layout = Layout(
             Fieldset(
                 self.form_title,
-                Div('title', css_class="col-sm-6 col-sm-offset-3"),
+                Div('title', css_class="col-sm-6"),
+                Div('picture', css_class="col-sm-6"),
                 Div('description', css_class="col-sm-12"),
                 Div('type', css_class="col-sm-6"),
                 Div('price', css_class="col-sm-6"),

@@ -1,3 +1,4 @@
+import os
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.templatetags.static import static
@@ -47,13 +48,16 @@ class Product(SaveSlug):
         ('MAR', 'Marinade'),
     )
 
+    def get_picture_path(instance, filename):
+        return os.path.join('products/%s' % filename)
+
     description = models.CharField(max_length=1024)
     type = models.ForeignKey(Type, null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     contains = models.ManyToManyField(Ingredient, null=True, blank=True)
     perks = models.ManyToManyField(Perk, null=True, blank=True)
     available = models.BooleanField(default=True)
-    picture = models.ImageField(null=True, blank=True)
+    picture = models.ImageField(upload_to=get_picture_path, null=True, blank=True)
 
     active_objects = AvailableProductManager()
     objects = models.Manager()
@@ -64,7 +68,7 @@ class Product(SaveSlug):
     def get_picture_location(self):
         # for now just have the picture be the default
         if self.picture:
-            return static('img/default.jpeg')
+            return self.picture.url
         else:
             return static('img/default.jpeg')
 
