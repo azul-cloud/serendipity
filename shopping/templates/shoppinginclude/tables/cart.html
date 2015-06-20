@@ -21,7 +21,7 @@
       <td class="price">${{ item.price }}</td>
       <td class="subtotal">${{ item.subtotal }}</td>
       <td>
-        <button class="cart-increment-item btn btn-success">
+        <button class="cart-increment-item btn btn-brand">
           <span class="glyphicon glyphicon-plus"></span>
         </button>
         <button class="cart-decrement-item btn btn-warning">
@@ -43,7 +43,7 @@
           {% csrf_token %}
           <script src="https://checkout.stripe.com/checkout.js"></script>
 
-          <button class="btn btn-green btn-lg" id="stripe-button">
+          <button class="btn btn-brand btn-lg" id="stripe-button">
             Checkout <span class="glyphicon glyphicon-shopping-cart"></span>
           </button>
 

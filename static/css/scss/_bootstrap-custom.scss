@@ -22,10 +22,10 @@
 	}
 
 	> li.active > a {
-		background: $green-dark;
+		background: $brand-dark;
 
 		&:hover {
-			background: $green;
+			background: $brand;
 		}
 	}
 }

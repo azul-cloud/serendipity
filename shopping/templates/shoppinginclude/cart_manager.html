@@ -1,14 +1,14 @@
 {% load carton_tags %}
 
 {% get_cart as cart %}
-  <div class="text-center">
-    {% if p not in cart.products %}
-    <a class="btn btn-default btn-lg add-to-cart" data-id="{{ p.id }}">
-      Add to Cart <span class="glyphicon glyphicon-shopping-cart"></span>
-    </a>
-    {% else %}
-    <a class="btn btn-default btn-lg" href="{% url 'shopping_cart' %}">
-      View in Cart
-    </a>
-    {% endif %}
-  </div>
+<div class="text-center">
+  {% if p not in cart.products %}
+  <a class="btn btn-default btn-lg add-to-cart" data-id="{{ p.id }}">
+    Add to Cart <span class="glyphicon glyphicon-shopping-cart"></span>
+  </a>
+  {% else %}
+  <a class="btn btn-default btn-lg" href="{% url 'shopping_cart' %}">
+    View in Cart
+  </a>
+  {% endif %}
+</div>
