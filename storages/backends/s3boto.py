@@ -140,7 +140,7 @@ class S3BotoStorage(Storage):
         if not access_key and not secret_key:
             access_key, secret_key = self._get_access_keys()
         self.connection = self.connection_class(access_key, secret_key,
-            calling_format=self.calling_format)
+            calling_format=self.calling_format, host="s3-us-west-2.amazonaws.com")
 
     @property
     def bucket(self):

@@ -8,7 +8,12 @@
   <div class="product-panel">
     <div class="row">
       <div class="col-xs-12">
-        <img class="blur" src="{{ p.get_picture_location }}" />
+        <img 
+          {# blur image if default #}
+          {% if p.get_picture_location == "/static/img/default.jpeg" %}
+            class="blur"
+          {% endif %}
+          src="{{ p.get_picture_location }}" />
       </div>
     </div>
     <div class="row">
